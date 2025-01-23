@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 23
-  productGUID: 5c43c72682d8e4d1986ff3c385c69c7f
+  productGUID: 965060db70c2c4f92aba87e4b19ce7de
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: AdvGameplayDev
+  productName: My project
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -874,6 +874,7 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Collab: 1
     UNet: 1
   luminIcon:
     m_Name: 
@@ -888,10 +889,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 0a7e2eb8-9eab-491e-9541-eee0ebf54703
+  cloudProjectId: 499f18c8-a5e0-439b-b90b-48f6f7c59a61
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: AdvGameplayDev
+  projectName: My project
   organizationId: unity_9aea9211c75c14220ac8
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
