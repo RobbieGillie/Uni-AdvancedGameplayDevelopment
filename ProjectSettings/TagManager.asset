@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Tel
+  - telTarget
+  - OOB
+  - intField
+  - keyItem1
+  - keyItem2
   layers:
   - Default
   - TransparentFX

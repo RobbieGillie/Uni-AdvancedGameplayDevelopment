@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 2396173487189548919}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,12 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a34cd9080a49f4d98359afac32bc9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 11400000, guid: e51b62f7212011d488ef3ef787e9351f, type: 2}
   turnSpeed: 10
   speed: 5
   jumpHeight: 10
   gravity: 1
-  _isGrounded: 0
-  _rb: {fileID: 0}
 --- !u!54 &2396173487189548919
 Rigidbody:
   m_ObjectHideFlags: 0
