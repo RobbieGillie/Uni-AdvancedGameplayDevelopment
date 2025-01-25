@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _input;
     private Camera _camera;
     public bool[] hasKey = new bool[2];
+    public bool isWarping;
     [SerializeField] bool canInteract;
     public KeyCode interactKey = KeyCode.E;
     
@@ -95,6 +96,12 @@ public class PlayerController : MonoBehaviour
         {
             case "OOB":
                 transform.position = new Vector3(9, 1, 0);
+                break;
+            case "dimensionMain":
+                isWarping = false;
+                break;
+            case "dimensionFuture":
+                isWarping = true;
                 break;
         }
         

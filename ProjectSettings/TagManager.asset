@@ -11,6 +11,8 @@ TagManager:
   - intField
   - keyItem1
   - keyItem2
+  - dimensionMain
+  - dimensionFuture
   layers:
   - Default
   - TransparentFX
