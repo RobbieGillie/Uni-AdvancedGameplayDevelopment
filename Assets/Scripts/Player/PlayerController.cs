@@ -23,11 +23,18 @@ public class PlayerController : MonoBehaviour
     public bool isWarping;
     [SerializeField] bool canInteract;
     public KeyCode interactKey = KeyCode.E;
+    public Canvas pauseMenu;
+    private bool _isPaused;
+    
+    private MyMethods MyMethods;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _camera = Camera.main;
+        playerInventory.Container.Clear();
+        MyMethods = gameObject.AddComponent<MyMethods>();
+        _isPaused = false;
     }
     
     private void Update()
@@ -47,11 +54,29 @@ public class PlayerController : MonoBehaviour
         
         if (Input.GetKeyDown(interactKey) && canInteract)
         {
-            Interact();
+            Interact(); // not finished, need to add logic for this!
         }
         
+        if (pauseMenu.gameObject.activeSelf)
+        {
+            _isPaused = true;
+        }
+        else
+        {
+            _isPaused = false;
+        }
 
-
+        if (Input.GetKeyDown(KeyCode.Escape) && _isPaused)  
+        {
+            MyMethods.Unpause();
+            MyMethods.DisableMenu(pauseMenu.gameObject);
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && !_isPaused)
+        {
+            MyMethods.Pause();
+            MyMethods.EnableMenu(pauseMenu.gameObject);
+        }
+        
     }
 
     private void Move()
@@ -75,7 +100,7 @@ public class PlayerController : MonoBehaviour
         _isGrounded = false;
     }
     
-    private void Interact()
+    private void Interact() // not finished, need to add logic for this!
     {
         
     }

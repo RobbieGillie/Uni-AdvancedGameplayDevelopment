@@ -17,13 +17,14 @@ public class MsgSystem : ScriptableObject
 {
     [TextArea(20,20)] public string message;
     public MsgType type;
-    private int IDCounter = 0;
+    private static int IDCounter = 0;
     private bool _isDestroyed = false;
     
     public MsgSystem(string message, MsgType type)
     {
         IDCounter++;
         this.message = $"{message} (ID: {IDCounter})";
+        
         this.type = type;
         _isDestroyed = false;
     }

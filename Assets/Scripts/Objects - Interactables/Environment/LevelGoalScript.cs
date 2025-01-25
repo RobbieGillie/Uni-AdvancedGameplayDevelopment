@@ -12,8 +12,9 @@ using UnityEngine;
 
 public class LevelGoalScript : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject player, completeUI;
     public HUDElements hud;
+    public bool complete = false;
     private bool _hasAllKeys = false;
     private PlayerController _playerController;
 
@@ -29,6 +30,10 @@ public class LevelGoalScript : MonoBehaviour
             Debug.Log("Level Complete!");
             MsgSystem levelComplete = MsgSystem.CreateInstance("Level Complete!", MsgType.Success);
             hud.messages.Add(levelComplete);
+            
+            complete = true;
+            completeUI.SetActive(true);
+            
             
             // need to add UI and level completion scripting here
         }
