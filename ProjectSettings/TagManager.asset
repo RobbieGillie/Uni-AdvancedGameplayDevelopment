@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Tel
+  - telTarget
+  - OOB
+  - intField
+  - keyItem1
+  - keyItem2
+  - dimensionMain
+  - dimensionFuture
   layers:
   - Default
   - TransparentFX
