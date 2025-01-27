@@ -8,83 +8,49 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    //Player Inventory
+    [Header("Player Inventory")]
     public PlayerInventory playerInventory;
     public GameObject keyItem;
     
-    //Variables for player and camera movement
-    [SerializeField] float turnSpeed; private bool _isGrounded; private Rigidbody _rb;
-    float currentAngle; float currentAngleVelocity;
-    public float speed = 5.0f, jumpHeight = 5.0f, gravity = 10f; private float _rotInput;
+    [Header("Player Movement")]
+    [SerializeField] private float turnSpeed; 
+    private bool _isGrounded; 
+    private Rigidbody _rb;
+    private float currentAngle; 
+    private float currentAngleVelocity;
+    [SerializeField] private float speed = 5.0f, jumpHeight = 5.0f, gravity = 10f; 
+    private float _rotInput;
     
+
     private Vector3 _input;
-    private Camera _camera;
     public bool[] hasKey = new bool[2];
     public bool isWarping;
-    [SerializeField] bool canInteract;
-    public KeyCode interactKey = KeyCode.E;
-    public Canvas pauseMenu;
-    private bool _isPaused;
     
     private MyMethods MyMethods;
     
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _camera = Camera.main;
         playerInventory.Container.Clear();
         MyMethods = gameObject.AddComponent<MyMethods>();
-        _isPaused = false;
     }
     
     private void Update()
     {
-        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
         Move();
         
-        if (Input.GetButtonDown("Jump") && _isGrounded)
-        {
-            Jump();
-        }
-        
-        if (!_isGrounded)
-        {
-            _rb.AddForce(Vector3.down * gravity);
-        }
-        
-        if (Input.GetKeyDown(interactKey) && canInteract)
-        {
-            Interact(); // not finished, need to add logic for this!
-        }
-        
-        if (pauseMenu.gameObject.activeSelf)
-        {
-            _isPaused = true;
-        }
-        else
-        {
-            _isPaused = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && _isPaused)  
-        {
-            MyMethods.Unpause();
-            MyMethods.DisableMenu(pauseMenu.gameObject);
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && !_isPaused)
-        {
-            MyMethods.Pause();
-            MyMethods.EnableMenu(pauseMenu.gameObject);
-        }
+        Jump();
         
     }
 
     private void Move()
     {
+        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        
         if (_input.magnitude >= 0.1f)
         {
             // Calculate the angle to rotate the player
-            float targetAngle = Mathf.Atan2(_input.x, _input.z) * Mathf.Rad2Deg + _camera.transform.eulerAngles.y;
+            float targetAngle = Mathf.Atan2(_input.x, _input.z) * Mathf.Rad2Deg;
             currentAngle = Mathf.SmoothDampAngle(currentAngle, targetAngle, ref currentAngleVelocity, turnSpeed);
             transform.rotation = Quaternion.Euler(0, targetAngle, 0);
             
@@ -96,13 +62,18 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        _rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-        _isGrounded = false;
-    }
-    
-    private void Interact() // not finished, need to add logic for this!
-    {
+        if (!_isGrounded)
+        {
+            //This will fix a bug where the player is not fully on the ground, making the _isGrounded bool false.
+            _rb.AddForce(Vector3.down * gravity);
+        }
         
+        //Handling jumping
+        if (Input.GetButtonDown("Jump") && _isGrounded)
+        {
+            _rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            _isGrounded = false;
+        }
     }
     
     private void OnCollisionEnter (Collision hit)

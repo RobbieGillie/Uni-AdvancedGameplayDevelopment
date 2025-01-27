@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+/// <summary>
+/// This script will move the current camera to the position of the next camera bsed on the _currentCameraIndex
+/// </summary>
 public class CameraCycle : MonoBehaviour
 {
     [SerializeField] private CinemachineFreeLook[] _cameras; 
