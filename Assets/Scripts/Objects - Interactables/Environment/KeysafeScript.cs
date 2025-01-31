@@ -13,17 +13,27 @@ public class KeysafeScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == player && player.GetComponent<PlayerController>().hasKey[0])
+        //If the player has collided with this
+        if (other.gameObject == player)
         {
-            Debug.Log("You have the first key! Safe opened!");
-            MsgSystem key1Success = MsgSystem.CreateInstance("You have the first key! Safe opened!", MsgType.Success);
-            hud.messages.Add(key1Success);
-            
-            gameObject.SetActive(false);
-            safe.SetActive(false);
-            safeContents.SetActive(true);
+            //Check what key the player has
+            if (player.GetComponent<PlayerController>().hasKey[0])
+            {
+                Debug.Log("You have the first key! Safe opened!");
+                MsgSystem key1Success =
+                    MsgSystem.CreateInstance("You have the first key! Safe opened!", MsgType.Success);
+                hud.messages.Add(key1Success);
+
+                gameObject.SetActive(false);
+                safe.SetActive(false);
+                safeContents.SetActive(true);
+            }
+            else if(player.GetComponent<PlayerController>().hasKey[1]) //Example: Key 2
+            {
+                Debug.Log("Keysafe: You have the secon key! Safe opened!");
+            }
         }
-        else
+        else //The player does not have a key
         {
             Debug.Log("Please collect the first key!");
             MsgSystem key1Warning = MsgSystem.CreateInstance("Please collect the first key!", MsgType.Warning);

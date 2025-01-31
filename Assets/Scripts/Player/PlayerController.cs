@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private float currentAngleVelocity;
     [SerializeField] private float speed = 5.0f, jumpHeight = 5.0f, gravity = 10f; 
     private float _rotInput;
+    [SerializeField] private float rotationOffset = -45; //Used to rotate the player on the y axis for simpler control
     
 
     private Vector3 _input;
