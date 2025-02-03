@@ -8,7 +8,7 @@ public class KeyItem : MonoBehaviour, IInteraction
     
     public virtual void Interact()
     {
-        KeyController.instance.addKey(keyName);
+        KeyController.instance.AddKey(keyName);
 
         Destroy(this.gameObject);
     }

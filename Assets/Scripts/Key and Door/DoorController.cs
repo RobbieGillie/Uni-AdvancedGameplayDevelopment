@@ -20,6 +20,9 @@ public class DoorController : MonoBehaviour, IInteraction
         {
             //Unlock the door
             isDoorLocked = false;
+            
+            //Remove the key from the keyChain
+            KeyController.instance.RemoveKey(requiredKey);
 
             this.GetComponent<BoxCollider>().enabled = false; //Stops re-triggering the door
             doorObject.GetComponent<Animation>().Play("DoorOpenAnim");

@@ -23,7 +23,7 @@ public class KeyController : MonoBehaviour
         }
     }
 
-    public void addKey(string keyName)
+    public void AddKey(string keyName)
     {
         //Add the key to the list
         keyChain.Add(keyName);
@@ -31,7 +31,7 @@ public class KeyController : MonoBehaviour
         //TODO: Add a check if the key already exist
     }
 
-    public void removeKey(string keyName)
+    public void RemoveKey(string keyName)
     {
         //Remove the key from the list
         keyChain.Remove(keyName);
