@@ -13,6 +13,7 @@ public class TimeTravelController : MonoBehaviour
     [SerializeField] private GameObject fadeUI;
     private GameObject playerObject;
     private bool isInPast = true;
+    private bool isTravelling = false;
 
     void Start()
     {
@@ -35,6 +36,7 @@ public class TimeTravelController : MonoBehaviour
 
     IEnumerator TransitionUI(Camera oldCamera, Camera newCamera, float travelLocation)
     {
+        isTravelling = true;
         //Fade in
         fadeUI.SetActive(true);
         fadeUI.GetComponent<Animation>().Play("FadeInAnim");
@@ -53,5 +55,11 @@ public class TimeTravelController : MonoBehaviour
         fadeUI.GetComponent<Animation>().Play("FadeOutAnim");
         yield return new WaitForSeconds(0.4f);
         fadeUI.SetActive(false);
+        isTravelling = false;
+    }
+
+    public bool isTravellingTime()
+    {
+        return isTravelling;
     }
 }

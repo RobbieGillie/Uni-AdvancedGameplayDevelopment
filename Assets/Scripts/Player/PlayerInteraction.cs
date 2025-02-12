@@ -12,11 +12,11 @@ public class PlayerInteraction : MonoBehaviour
     private bool isEDown;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.L) && !TimeTravelController.Instance.isTravellingTime())
         {
             isEDown = true;
         }
-        else if (Input.GetKeyUp(KeyCode.E))
+        else if (Input.GetKeyUp(KeyCode.L) || TimeTravelController.Instance.isTravellingTime())
         {
             isEDown = false;
         }
@@ -37,7 +37,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (isEDown)
             {
-                Debug.Log("Has pressed push button");
+                //Debug.Log("Has pressed push button");
                 other.GetComponent<PushableBlock>().Push();
             }
         }
