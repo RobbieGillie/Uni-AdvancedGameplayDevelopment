@@ -16,6 +16,7 @@ TagManager:
   - Interactable
   - Pushable
   - BlackLight
+  - _GameError
   layers:
   - Default
   - TransparentFX
